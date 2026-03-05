@@ -1,10 +1,10 @@
-# basic_py_package
+# file_handler_py_package
 
-Basic Python Package with information and all needed files to install it via "pip install".
+A Python package for handling file operations and CSV processing.
 
 ## Description
 
-This is a template/example of a basic Python package that demonstrates the minimal structure needed to create a package that can be installed using pip.
+This package provides convenient classes for reading, writing, and manipulating files, with specialized support for CSV operations. It includes `FileHandler` for general file operations and `CSVHandler` for CSV-specific functionality.
 
 ## Installation
 
@@ -23,35 +23,57 @@ pip install -e .
 After installation, you can import and use the package:
 
 ```python
-import basic_py_package
+from file_handler_py_package import FileHandler, CSVHandler
 
-# Use the provided functions
-print(basic_py_package.greet("World"))  # Output: Hello, World!
-print(basic_py_package.add(2, 3))       # Output: 5
-print(basic_py_package.multiply(4, 5))  # Output: 20
+# Use FileHandler for general file operations
+fh = FileHandler('myfile.txt')
+content = fh.read()
+fh.write('New content')
+fh.append('Additional content')
+
+# Use CSVHandler for CSV operations
+csv_handler = CSVHandler('data.csv')
+data = csv_handler.read_csv('data.csv')
+csv_handler.write_csv(data)
 ```
 
 ## Package Structure
 
 ```text
-basic_py_package/
-├── basic_py_package/      # Package directory
-│   └── __init__.py        # Package initialization with example functions
-├── pyproject.toml         # Modern Python project metadata (PEP 621)
-├── setup.py               # Setup script for backward compatibility
-├── MANIFEST.in            # Specifies additional files to include
-├── README.md              # This file
-├── LICENSE                # License information
-└── .gitignore             # Git ignore rules
+file_handler_py_package/
+├── file_handler_py_package/   # Package directory
+│   ├── __init__.py            # Package initialization
+│   ├── file_handler.py        # FileHandler class for general file operations
+│   └── csv_handler.py         # CSVHandler class for CSV operations
+├── pyproject.toml             # Modern Python project metadata (PEP 621)
+├── setup.py                   # Setup script for backward compatibility
+├── MANIFEST.in                # Specifies additional files to include
+├── README.md                  # This file
+├── LICENSE                    # License information
+└── .gitignore                 # Git ignore rules
 ```
 
 ## Features
 
-This package includes:
+This package provides:
+
+- **FileHandler**: A class for general file operations with methods for:
+  - Reading files
+  - Writing files
+  - Appending to files
+  - Checking file existence
+  - Identifying file types by extension
+  - Deleting files
+
+- **CSVHandler**: A specialized class extending FileHandler with CSV-specific methods:
+  - Reading CSV files into lists of dictionaries
+  - Writing lists of dictionaries to CSV files
+  - Support for custom delimiters
+  - Configurable field names
 
 - Modern `pyproject.toml` configuration (PEP 621)
 - Backward-compatible `setup.py`
-- Example functions with docstrings
+- Type hints for better IDE support
 - Proper package structure
 - Version information
 

@@ -3,12 +3,12 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "basic_py_package"
+name = "file_handler_py_package"
 version = "0.1.0"
 authors = [
-    {name = "Christian Schinkel", email = "christian@example.com"}
+    {name = "Christian Schinkel", email = "christian.schinkel@me.com"}
 ]
-description = "A basic Python package template that can be installed via pip"
+description = "A Python package for handling files and CSV operations"
 readme = "README.md"
 license = {file = "LICENSE"}
 requires-python = ">=3.7"
@@ -24,12 +24,12 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
-keywords = ["example", "package", "template", "basic"]
+keywords = ["file", "handler", "csv", "file-operations"]
 
 [project.urls]
-"Homepage" = "https://github.com/ChristianSchinkel/basic_py_package"
-"Bug Tracker" = "https://github.com/ChristianSchinkel/basic_py_package/issues"
-"Source Code" = "https://github.com/ChristianSchinkel/basic_py_package"
+"Homepage" = "https://github.com/ChristianSchinkel/MyFileHandlerForPY"
+"Bug Tracker" = "https://github.com/ChristianSchinkel/MyFileHandlerForPY/issues"
+"Source Code" = "https://github.com/ChristianSchinkel/MyFileHandlerForPY"
 
 [tool.setuptools]
-packages = ["basic_py_package"]
+packages = ["file_handler_py_package"]
