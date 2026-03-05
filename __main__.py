@@ -1,0 +1,16 @@
+"""The main entry point for the application."""
+from file_handler_py_package import file_handler, csv_handler
+
+
+def main():
+    """The main function."""
+    print("Hello, World!")
+    fh = file_handler.FileHandler("test.txt")
+    ch = csv_handler.CSVHandler("test.csv")
+    fh.write("This is a test file.")
+    ch.write_csv([{"name": "John", "age": 30},
+                  {"name": "Jane", "age": 25}])
+
+
+if __name__ == "__main__":
+    main()
