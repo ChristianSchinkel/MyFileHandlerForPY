@@ -33,7 +33,7 @@ print(basic_py_package.multiply(4, 5))  # Output: 20
 
 ## Package Structure
 
-```
+```text
 basic_py_package/
 ├── basic_py_package/      # Package directory
 │   └── __init__.py        # Package initialization with example functions
@@ -48,6 +48,7 @@ basic_py_package/
 ## Features
 
 This package includes:
+
 - Modern `pyproject.toml` configuration (PEP 621)
 - Backward-compatible `setup.py`
 - Example functions with docstrings
