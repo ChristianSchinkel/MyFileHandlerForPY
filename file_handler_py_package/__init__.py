@@ -6,10 +6,11 @@ that can be installed via pip install.
 """
 
 from .file_handler import FileHandler
+from .csv_handler import CSVHandler
 
 __version__ = "0.1.0"
 __author__ = "Christian Schinkel"
-__all__ = ["FileHandler"]
+__all__ = ["FileHandler", "CSVHandler"]
 
 
 def main():
