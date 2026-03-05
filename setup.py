@@ -6,13 +6,13 @@ For modern installations, pyproject.toml is preferred.
 """
 
 from pathlib import Path
-from setuptools import find_packages, setup
+import setuptools
 
 # Read the README file
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 
-setup(
+setuptools.setup(
     name="file_handler_py_package",
     version="0.1.0",
     author="Christian Schinkel",
@@ -21,7 +21,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ChristianSchinkel/MyFileHandlerForPY",
-    packages=find_packages(),
+    packages=setuptools.find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
