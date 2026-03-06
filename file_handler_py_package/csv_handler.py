@@ -2,13 +2,13 @@
 import csv
 from typing import Any, Dict, List, Optional
 from .file_handler import ENCODING_STR
-from .file_handler import FileHandler
+from .file_handler import FileManager
 
 DELIMITER_STR = ','
 
 
-class CSVHandler(FileHandler):
-    """A CSV file handler class."""
+class CSVManager(FileManager):
+    """A CSV file Manager class."""
     def __init__(self,
                  file_path: str,
                  delimiter: str = DELIMITER_STR,

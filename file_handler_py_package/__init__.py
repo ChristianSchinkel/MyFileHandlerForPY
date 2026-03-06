@@ -5,12 +5,12 @@ This package provides a simple example of a Python package structure
 that can be installed via pip install.
 """
 
-from .file_handler import FileHandler
-from .csv_handler import CSVHandler
+from .file_handler import FileManager
+from .csv_handler import CSVManager
 
 __version__ = "0.1.0"
 __author__ = "Christian Schinkel"
-__all__ = ["FileHandler", "CSVHandler"]
+__all__ = ["FileManager", "CSVManager"]
 
 
 def main():

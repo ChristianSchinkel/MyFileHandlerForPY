@@ -1,11 +1,11 @@
-"""File handler package for Python."""
+"""File Manager package for Python."""
 import os
 
 ENCODING_STR = "utf-8"
 
 
-class FileHandler:
-    """A simple file handler class."""
+class FileManager:
+    """A simple file manager class."""
     def __init__(self, file_path: str, encoding: str = ENCODING_STR) -> None:
         self.file_path = file_path
         self.encoding = encoding
