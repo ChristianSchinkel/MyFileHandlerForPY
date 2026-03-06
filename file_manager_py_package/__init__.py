@@ -5,8 +5,8 @@ This package provides a simple example of a Python package structure
 that can be installed via pip install.
 """
 
-from .file_handler import FileManager
-from .csv_handler import CSVManager
+from .file_manager import FileManager
+from .csv_manager import CSVManager
 
 __version__ = "0.1.0"
 __author__ = "Christian Schinkel"

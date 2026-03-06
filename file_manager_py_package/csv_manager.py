@@ -1,8 +1,8 @@
-"""CSV handler for Python."""
+"""CSV Manager for Python."""
 import csv
 from typing import Any, Dict, List, Optional
-from .file_handler import ENCODING_STR
-from .file_handler import FileManager
+from .file_manager import ENCODING_STR
+from .file_manager import FileManager
 
 DELIMITER_STR = ','
 
