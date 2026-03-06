@@ -4,11 +4,12 @@ from time import sleep
 
 from file_manager_py_package.memory_manager import MemoryManager
 # csv_manager, file_manager
+WELCOME_MESSAGE = "Welcome to the File Manager for Python!"
 
 
 def main():
     """The main function."""
-    print("Hello, World!")
+    print(WELCOME_MESSAGE)
     # fh = file_manager.FileManager("app_data/test.txt")
     # ch = csv_manager.CSVManager("app_data/test.csv")
     mm = MemoryManager()
