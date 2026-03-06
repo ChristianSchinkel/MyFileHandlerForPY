@@ -19,6 +19,12 @@ class FileManager:
         _, ext = os.path.splitext(self.file_path)
         return ext.lower()
 
+    def get_file_name(self) -> str:
+        """Get the name of the file without the directory path
+        and stripping the extension."""
+        name, _ = os.path.splitext(os.path.basename(self.file_path))
+        return name
+
     def read(self) -> str:
         """Read the contents of the file."""
         if not self.exists_file_at(self.file_path):
