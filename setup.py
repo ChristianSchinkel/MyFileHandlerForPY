@@ -13,7 +13,7 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 
 setuptools.setup(
-    name="file_handler_py_package",
+    name="file_manager_py_package",
     version="0.1.0",
     author="Christian Schinkel",
     author_email="christian.schinkel@me.com",
@@ -35,5 +35,8 @@ setuptools.setup(
         "Programming Language :: Python :: 3.12",
     ],
     python_requires=">=3.7",
+    install_requires=[
+        "InputController>=0.2",
+    ],
     keywords="file handler csv file-operations",
 )

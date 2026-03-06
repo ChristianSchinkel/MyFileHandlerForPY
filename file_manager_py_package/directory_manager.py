@@ -1,4 +1,4 @@
-"""""Directory Manager for Python."""
+"""Directory Manager for Python."""
 import os
 
 
