@@ -11,8 +11,8 @@ def import_files_and_clear_data(option: str):
     ic = InputController()
     mm = MemoryManager()
     if option == "import":
-        response = ic.format_bool("Do you want to import files \
-                   into the application? (yes/no): ")
+        response = ic.format_bool("Do you want to import files "
+                                  "into the application? (yes/no): ")
         if response:
             print("You chose to import files.")
             mm.copy_files_from_directory()
@@ -20,8 +20,8 @@ def import_files_and_clear_data(option: str):
             print("You chose not to import files.")
 
     elif option == "clear":
-        response = ic.format_bool("Do you want to clear \
-                        the application data? (yes/no): ")
+        response = ic.format_bool("Do you want to clear "
+                                  "the application data? (yes/no): ")
         if response:
             print("You chose to clear the application data.")
             mm.clear_app_data()

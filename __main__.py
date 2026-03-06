@@ -23,9 +23,9 @@ def main():
         #
         se.import_files_and_clear_data(option="clear")
         # Break if exit is typed, otherwise continue the loop
-        exit_response = input("Type 'exit' to quit or press \
-                              Enter to continue: ")
-        if exit_response.lower() == 'exit':
+        exit_response = input("Type 'exit' to quit or "
+                              "press Enter to continue: ")
+        if exit_response.lower() == 'exit' or exit_response.lower() == 'quit':
             print("Exiting the application. Goodbye!")
             break
 
