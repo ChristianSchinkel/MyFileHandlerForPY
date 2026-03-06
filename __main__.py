@@ -1,6 +1,7 @@
 """The main entry point for the application."""
 import os
 from time import sleep
+import InputController
 
 from file_manager_py_package.memory_manager import MemoryManager
 # csv_manager, file_manager
