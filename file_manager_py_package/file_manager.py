@@ -49,3 +49,12 @@ class FileManager:
             os.remove(p)
         else:
             raise FileNotFoundError(f"No file found at {p}")
+
+    def which_os(self) -> str:
+        """Identify the operating system
+        and file path separator."""
+        # Return string for Root directory based on OS
+        if os.name == "posix":
+            return "./app_data"
+
+        return ".\\app_data"
