@@ -28,8 +28,9 @@ def main() -> None:
     table_names = []
     table_name = input("Enter the name of the table to create: ")
     table_names.append(table_name)
+    # Create a table in the database
     connection.execute(f'''
-CREATE TABLE IF NOT EXISTS {table_name} (
+CREATE TABLE IF NOT EXISTS {table_name.lower()} (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     age INTEGER NOT NULL
