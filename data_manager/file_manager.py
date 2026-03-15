@@ -12,7 +12,6 @@ class FileManager:
     """
     A class to manage file operations such as saving and loading data.
     """
-    pass
 
 
 def count_number_of_files_in_directory(directory: str) -> int:
@@ -107,7 +106,6 @@ def get_file_name() -> str:
 
 def main() -> None:
     """The main function."""
-    pass
 
 
 if __name__ == "__main__":

@@ -6,6 +6,7 @@ import file_manager
 count = file_manager.count_files_with_name_and_extension('.',
                                                          'Database',
                                                          '.db')
+DEFAULT_PATH = f"./app_data/persistance/Database{count}.db"
 
 
 class DatabaseManagementSystem:
@@ -13,7 +14,7 @@ class DatabaseManagementSystem:
     A class to manage database operations such as creating, reading,
     updating, and deleting databases.
     """
-    def __init__(self, db_name: str = f"Database{count}.db"):
+    def __init__(self, db_name: str = DEFAULT_PATH):
         self.db_name = db_name
         self.connection = None
 
@@ -48,8 +49,8 @@ CREATE TABLE IF NOT EXISTS {table_name.lower()} (
     # Insert data into the table
     cur.execute(f"""
         INSERT INTO {table_name.lower()} VALUES
-            ('Monty Python and the Holy Grail', 1975, 8.2),
-            ('And Now for Something Completely Different', 1971, 7.5)
+            ('1', 'Monty Python and the Holy Grail', 1975, 8.2),
+            ('2', 'And Now for Something Completely Different', 1971, 7.5)
                 """)
     con.commit()
     # Query the table to retrieve data
@@ -58,11 +59,11 @@ CREATE TABLE IF NOT EXISTS {table_name.lower()} (
 
     # Insert sample data into the table
     data = [
-        ("Monty Python Live at the Hollywood Bowl", 1982, 7.9),
-        ("Monty Python's The Meaning of Life", 1983, 7.5),
-        ("Monty Python's Life of Brian", 1979, 8.0),
+        ("3", "Monty Python Live at the Hollywood Bowl", 1982, 7.9),
+        ("4", "Monty Python's The Meaning of Life", 1983, 7.5),
+        ("5", "Monty Python's Life of Brian", 1979, 8.0),
     ]
-    cur.executemany("INSERT INTO movie VALUES(?, ?, ?)", data)
+    cur.executemany("INSERT INTO movie VALUES(?, ?, ?, ?)", data)
     # Notice that ? placeholders are used to bind data to the query.
     # Always use placeholders instead of string formatting
     # to bind Python values to SQL statements,
@@ -78,7 +79,7 @@ CREATE TABLE IF NOT EXISTS {table_name.lower()} (
     # Close the connection to the database
     con.close()
     # Create a new connection to the database and query the data
-    new_con = sqlite3.connect("tutorial.db")
+    new_con = sqlite3.connect(DatabaseManagementSystem().db_name)
     new_cur = new_con.cursor()
     res = new_cur.execute("SELECT title, year FROM movie ORDER BY score DESC")
     title, year = res.fetchone()
