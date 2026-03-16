@@ -81,6 +81,27 @@ class FileManager:
             file.write(data)
         print(f"File '{file_name}' updated successfully.")
 
+    def import_files_from_directory(self, directory: str,
+                                    target_directory: str) -> None:
+        """Imports files from the specified directory to the target directory.
+        """
+        if not os.path.exists(directory):
+            print(f"Directory '{directory}' does not exist.")
+            return
+        if not os.path.exists(target_directory):
+            os.makedirs(target_directory)
+
+        for file_name in os.listdir(directory):
+            sp = os.path.join(directory, file_name)
+            tp = os.path.join(target_directory, file_name)
+            if os.path.isfile(sp):
+                with open(sp, 'r', encoding=self.encoder) as source_file:
+                    data = source_file.read()
+                with open(tp, 'w', encoding=self.encoder) as target_file:
+                    target_file.write(data)
+                print(f"File '{file_name}' imported "
+                      f"successfully to '{target_directory}'.")
+
     def delete_file(self, file_name: str) -> None:
         """Deletes the file with the given name."""
 
