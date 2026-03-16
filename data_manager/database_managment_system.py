@@ -17,6 +17,90 @@ class DatabaseManagementSystem:
         self.db_name = db_name
         self.connection = None
 
+    class DataBaseSchema:
+        """A class to define the database schema."""
+        def __init__(self, table_name: str, columns: tuple):
+            self.table_name = table_name
+            self.columns = columns
+
+        def create_table_name(self) -> str:
+            """Create a table name based on the provided table name."""
+            user_input = input("Enter the name of the table to create: ")
+            self.table_name = user_input
+            return self.table_name.lower()
+
+        def create_columns(self) -> str:
+            """Create a string of columns for creation of the table fields.
+            The user is prompted to enter the columns and their data types.
+            """
+            user_input = input("""Enter the columns and their data types
+                               (e.g., 'title TEXT, year INTEGER'): """)
+            pair = user_input.split(',')
+            pair = [item.strip() for item in pair]
+            self.columns = tuple(pair)
+            return ', '.join(self.columns)
+
+    def create_connection(self) -> sqlite3.Connection:
+        """Create a connection to the database."""
+        return sqlite3.connect(self.db_name)
+
+    def create_curesor(self) -> sqlite3.Cursor:
+        """Create a cursor object to execute SQL commands."""
+        con = self.create_connection()
+        return con.cursor()
+
+    def create_table(self, schema: DataBaseSchema) -> None:
+        """Create a table in the database based on the provided schema."""
+        con = self.create_connection()
+        cur = self.create_curesor()
+        cur.execute(f'''
+                    CREATE TABLE IF NOT EXISTS {schema.create_table_name()} (
+                    id INTEGER PRIMARY KEY,
+                    {schema.create_columns()}
+                    )''')
+        con.commit()
+        con.close()
+
+    def result_exists(self, table_name: str) -> bool:
+        """Check if a result exists for a given query."""
+        con = self.create_connection()
+        cur = self.create_curesor()
+        query = f"""SELECT {table_name} FROM sqlite_master"""
+        res = cur.execute(query)
+        exists = res.fetchone() is not None
+        print(f"Result exists for query '{query}': {exists}")
+        con.close()
+        return exists
+
+    def insert_data(self, table_name: str, data: list) -> None:
+        """Insert data into the specified table."""
+        con = self.create_connection()
+        cur = self.create_curesor()
+        placeholders = ', '.join(['?'] * len(data[0]))
+        query = f"INSERT INTO {table_name} VALUES({placeholders})"
+        cur.executemany(query, data)
+        con.commit()
+        con.close()
+
+    def insert_many_data(self, table_name: str, data: list) -> None:
+        """Insert many rows of data into the specified table."""
+        con = self.create_connection()
+        cur = self.create_curesor()
+        placeholders = ', '.join(['?'] * len(data[0]))
+        query = f"INSERT INTO {table_name} VALUES({placeholders})"
+        cur.executemany(query, data)
+        con.commit()
+        con.close()
+
+    def print_conttents(self, table_name: str) -> None:
+        """Print the contents of the specified table."""
+        con = self.create_connection()
+        cur = self.create_curesor()
+        query = f"SELECT * FROM {table_name}"
+        for row in cur.execute(query):
+            print(row)
+        con.close()
+
 
 def main() -> None:
     """Main function for Database Management System."""
