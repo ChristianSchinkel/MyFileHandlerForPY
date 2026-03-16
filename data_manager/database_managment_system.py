@@ -3,9 +3,8 @@ import sqlite3
 import file_manager
 # import InputController
 
-count = file_manager.count_files_with_name_and_extension('.',
-                                                         'Database',
-                                                         '.db')
+fm = file_manager.FileManager()
+count = fm.count_files_with_name_and_extension('.', 'Database', '.db')
 DEFAULT_PATH = f"./app_data/persistance/Database{count}.db"
 
 
