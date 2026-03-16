@@ -8,6 +8,7 @@ def display_file_handler_menu():
         print("""File Handler Menu:\n
 1. Create File\n
 2. Read File\n
+2.2 Import File\n
 3. Update File\n
 4. Delete File\n
 5. Back to Main Menu
@@ -19,6 +20,9 @@ def display_file_handler_menu():
         elif choice == "2":
             # Import the file reading function and call it
             print("File reading is not implemented yet.")
+        elif choice == "2.2":
+            # Import the file import function and call it
+            print("File importing is not implemented yet.")
         elif choice == "3":
             # Import the file update function and call it
             print("File updating is not implemented yet.")
