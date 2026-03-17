@@ -80,6 +80,47 @@ def display_database_handler_menu(dbms: DatabaseManagementSystem):
             print("Invalid choice. Please try again.")
 
 
+def display_settings_menu(fm: FileManager):
+    """Displays the settings menu and handles user input."""
+    is_running = True
+    while is_running:
+        print("""Settings Menu:\n
+1. Create UserDefaults\n
+4. Remove UserDefaults\n
+4.1 Remove Resource-files\n
+4.2 Remove persistence files\n
+2. Back to Main Menu
+              """)
+        choice = input("Please select an option: ")
+        if choice == "1":
+            # Import the UserDefaults file
+            setup_user_defaults(fm)
+        elif choice == "2":
+            print("Returning to the main menu.")
+            is_running = False
+        elif choice == "4":
+            # Remove UserDefaults file
+            fm.delete_file(fm.directory + "/user_defaults/UserDefaults.txt")
+        elif choice == "4.1":
+            # Remove All files in the resource directory
+            resource_dir = fm.directory + "/resources"
+            fm.delete_files_in_directory(resource_dir)
+
+        elif choice == "4.2":
+            # Remove persistence files
+            fm.delete_files_in_directory(fm.directory + "/persistence")
+        else:
+            print("Invalid choice. Please try again.")
+
+
+def setup_user_defaults(fm: FileManager):
+    """Sets up UserDefaults by importing a file from a specified directory."""
+    print("Create UserDefaults functionality is not implemented yet.")
+    dir_a = input("Please enter file path for UserDefaults file: ")
+    dir_b = fm.directory + "/user_defaults"
+    fm.import_file_from_directory(dir_a, dir_b)
+
+
 def main() -> None:
     """The main function for the data management sub-menu."""
     print("Data Management Sub-Menu is not implemented yet.")

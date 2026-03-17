@@ -1,6 +1,7 @@
 """The main entry point for the application."""
 from data_manager.sub_menu import (display_file_handler_menu,
-                                   display_database_handler_menu)
+                                   display_database_handler_menu,
+                                   display_settings_menu)
 from data_manager.file_manager import FileManager
 from data_manager.database_managment_system import DatabaseManagementSystem
 
@@ -22,7 +23,8 @@ def display_main_menu():
         print("""Main Menu:\n
 1. File Handler\n
 2. Database Handler\n
-3. Exit
+3. Settings\n
+4. Exit
           """)
         choice = input("Please select an option: ")
         if choice == "1":
@@ -32,6 +34,9 @@ def display_main_menu():
             # Import the database handler menu and call it
             display_database_handler_menu(dbms)
         elif choice == "3":
+            # Import the settings menu and call it
+            display_settings_menu(fm)
+        elif choice == "4":
             print("Exiting the application. Goodbye!")
             is_running = False
         else:

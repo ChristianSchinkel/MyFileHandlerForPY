@@ -3,6 +3,7 @@ File Manager for handling file operations
 such as saving and loading data.
 """
 import os
+import shutil
 
 
 class FileManager:
@@ -81,6 +82,27 @@ class FileManager:
             file.write(data)
         print(f"File '{file_name}' updated successfully.")
 
+    # Imprt file from a directory to a target directory
+    def import_file_from_directory(self, directory: str,
+                                   target_directory: str) -> None:
+        """Imports a file from the specified directory to the target directory.
+        """
+        if not os.path.exists(directory):
+            print(f"Directory '{directory}' does not exist.")
+            return
+        if not os.path.exists(target_directory):
+            os.makedirs(target_directory)
+            # Copy file with name "UserDefaults.txt" from directory
+            # to target_directory
+        source_file = os.path.join(directory, "UserDefaults.txt")
+        target_file = os.path.join(target_directory, "UserDefaults.txt")
+        if os.path.isfile(source_file):
+            shutil.copy(source_file, target_file)
+            print(f"File 'UserDefaults.txt' imported successfully to "
+                  f"'{target_directory}'.")
+        else:
+            print(f"File 'UserDefaults.txt' does not exist in '{directory}'.")
+
     def import_files_from_directory(self, directory: str,
                                     target_directory: str) -> None:
         """Imports files from the specified directory to the target directory.
@@ -111,6 +133,19 @@ class FileManager:
 
         os.remove(file_name)
         print(f"File '{file_name}' deleted successfully.")
+
+    def delete_files_in_directory(self, directory: str) -> None:
+        """Deletes all files in the specified directory."""
+        if not os.path.exists(directory):
+            print(f"Directory '{directory}' does not exist.")
+            return
+
+        for file_name in os.listdir(directory):
+            file_path = os.path.join(directory, file_name)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+                print(f"File '{file_name}' deleted successfully from "
+                      f"'{directory}'.")
 
     def construct_file_name(self, name: str, extension: str) -> str:
         """Constructs a file name with the given name and extension."""
