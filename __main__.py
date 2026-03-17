@@ -50,10 +50,8 @@ def show_app_info():
 +----------------------------------------------------------+
 |Welcome to the File Handler for Python!                   |
 +----------------------------------------------------------+
-|Welcome to the File Handler for Python!                   |
-+----------------------------------------------------------+
 |This application allows you to manage files and databases.|
-|version: 1.0.0                                            |
+|Version: 1.0.0                                            |
 |Author: Christian Schinkel                                |
 |License: MIT License                                      |
 +==========================================================+
