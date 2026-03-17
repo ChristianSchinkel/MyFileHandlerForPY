@@ -1,6 +1,6 @@
 """Database Management System for handling database operations."""
 import sqlite3
-from data_manager.file_manager import FileManager
+from src.data_manager.file_manager import FileManager
 # import InputController
 
 fm = FileManager()

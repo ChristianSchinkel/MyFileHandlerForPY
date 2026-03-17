@@ -1,6 +1,7 @@
 """Sub-menu for data management operations."""
-from data_manager.file_manager import FileManager
-from data_manager.database_management_system import DatabaseManagementSystem
+from src.data_manager.file_manager import FileManager
+from src.data_manager.database_management_system import (
+    DatabaseManagementSystem)
 
 
 def display_file_handler_menu(fm: FileManager):

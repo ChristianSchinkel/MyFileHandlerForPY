@@ -1,9 +1,10 @@
 """The main entry point for the application."""
-from data_manager.sub_menu import (display_file_handler_menu,
-                                   display_database_handler_menu,
-                                   display_settings_menu)
-from data_manager.file_manager import FileManager
-from data_manager.database_management_system import DatabaseManagementSystem
+from src.data_manager.sub_menu import (display_file_handler_menu,
+                                       display_database_handler_menu,
+                                       display_settings_menu)
+from src.data_manager.file_manager import FileManager
+from src.data_manager.database_management_system import (
+    DatabaseManagementSystem)
 
 
 def main() -> None:
