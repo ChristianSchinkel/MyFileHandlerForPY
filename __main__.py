@@ -5,16 +5,26 @@ from src.data_manager.sub_menu import (display_file_handler_menu,
 from src.data_manager.file_manager import FileManager
 from src.data_manager.database_management_system import (
     DatabaseManagementSystem)
+from src.utils import UserInterface
+
+__version__ = "1.0.0"
+__author__ = "Christian Schinkel"
+__license__ = "MIT License"
 
 
 def main() -> None:
     """The main function."""
-    show_app_info()
+    # Create an instance of the UserInterface class
+    ui = UserInterface()
+    # Display application information
+    ui.show_app_info(version=__version__, author=__author__, lic=__license__)
+    # Wait for a moment before clearing the console
+    ui.wait_and_clear_console(seconds=2)
     # Show Main Menu
-    display_main_menu()
+    display_main_menu(ui)
 
 
-def display_main_menu():
+def display_main_menu(ui):
     """Displays the main menu and handles user input."""
     fm = FileManager()
     dbms = DatabaseManagementSystem()
@@ -30,32 +40,21 @@ def display_main_menu():
         choice = input("Please select an option: ")
         if choice == "1":
             # Import the file handler menu and call it
-            display_file_handler_menu(fm)
+            display_file_handler_menu(ui, fm)
         elif choice == "2":
             # Import the database handler menu and call it
-            display_database_handler_menu(dbms)
+            display_database_handler_menu(ui, dbms)
         elif choice == "3":
             # Import the settings menu and call it
-            display_settings_menu(fm)
+            display_settings_menu(ui, fm)
         elif choice == "4":
             print("Exiting the application. Goodbye!")
             is_running = False
+            ui.wait_and_clear_console(seconds=2)
+            ui.clear_console()
         else:
             print("Invalid choice. Please try again.")
-
-
-def show_app_info():
-    """Displays information about the application."""
-    print("""
-+----------------------------------------------------------+
-|Welcome to the File Handler for Python!                   |
-+----------------------------------------------------------+
-|This application allows you to manage files and databases.|
-|Version: 1.0.0                                            |
-|Author: Christian Schinkel                                |
-|License: MIT License                                      |
-+==========================================================+
-          """)
+            ui.wait_and_clear_console(seconds=2)
 
 
 if __name__ == "__main__":

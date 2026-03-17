@@ -2,11 +2,13 @@
 from src.data_manager.file_manager import FileManager
 from src.data_manager.database_management_system import (
     DatabaseManagementSystem)
+from src.utils.user_interface import UserInterface
 
 
-def display_file_handler_menu(fm: FileManager):
+def display_file_handler_menu(ui: UserInterface, fm: FileManager):
     """Displays the file handler menu and handles user input."""
     is_running = True
+    ui.wait_and_clear_console(seconds=1)
     while is_running:
         print("""File Handler Menu:\n
 1. Create File\n
@@ -20,26 +22,34 @@ def display_file_handler_menu(fm: FileManager):
         if choice == "1":
             # Import the file creation function and call it
             fm.create_file("example.txt")
+            ui.wait_and_clear_console(seconds=1)
         elif choice == "2":
             # Import the file reading function and call it
             fm.read_file("example.txt")
+            ui.wait_and_clear_console(seconds=1)
         elif choice == "2.2":
             # Import the file import function and call it
             fm.import_files_from_directory("example.txt", "target_directory")
+            ui.wait_and_clear_console(seconds=1)
         elif choice == "3":
             # Import the file update function and call it
             fm.update_file("example.txt", "This is some updated content.")
+            ui.wait_and_clear_console(seconds=1)
         elif choice == "4":
             # Import the file deletion function and call it
             fm.delete_file("example.txt")
+            ui.wait_and_clear_console(seconds=1)
         elif choice == "5":
             print("Returning to the main menu.")
             is_running = False
+            ui.wait_and_clear_console(seconds=1)
         else:
             print("Invalid choice. Please try again.")
+            ui.wait_and_clear_console(seconds=1)
 
 
-def display_database_handler_menu(dbms: DatabaseManagementSystem):
+def display_database_handler_menu(ui: UserInterface,
+                                  dbms: DatabaseManagementSystem):
     """Displays the database handler menu and handles user input."""
     is_running = True
     while is_running:
@@ -68,20 +78,25 @@ def display_database_handler_menu(dbms: DatabaseManagementSystem):
         elif choice == "2":
             # Import the record reading function and call it
             print("Read Record functionality is not implemented yet.")
+            ui.wait_and_clear_console(seconds=1)
         elif choice == "3":
             # Import the record update function and call it
             print("Update Record functionality is not implemented yet.")
+            ui.wait_and_clear_console(seconds=1)
         elif choice == "4":
             # Import the record deletion function and call it
             print("Delete Record functionality is not implemented yet.")
+            ui.wait_and_clear_console(seconds=1)
         elif choice == "5":
             print("Returning to the main menu.")
             is_running = False
+            ui.wait_and_clear_console(seconds=1)
         else:
             print("Invalid choice. Please try again.")
+            ui.wait_and_clear_console(seconds=1)
 
 
-def display_settings_menu(fm: FileManager):
+def display_settings_menu(ui: UserInterface, fm: FileManager):
     """Displays the settings menu and handles user input."""
     is_running = True
     while is_running:
@@ -96,27 +111,32 @@ def display_settings_menu(fm: FileManager):
         if choice == "1":
             # Import the UserDefaults file
             setup_user_defaults(fm)
+            ui.wait_and_clear_console(seconds=2)
         elif choice == "2":
             print("Returning to the main menu.")
             is_running = False
+            ui.wait_and_clear_console(seconds=1)
         elif choice == "4":
             # Remove UserDefaults file
             fm.delete_file(fm.directory + "/user_defaults/UserDefaults.txt")
+            ui.wait_and_clear_console(seconds=1)
         elif choice == "4.1":
             # Remove All files in the resource directory
             resource_dir = fm.directory + "/resources"
             fm.delete_files_in_directory(resource_dir)
+            ui.wait_and_clear_console(seconds=1)
 
         elif choice == "4.2":
             # Remove persistence files
             fm.delete_files_in_directory(fm.directory + "/persistence")
+            ui.wait_and_clear_console(seconds=1)
         else:
             print("Invalid choice. Please try again.")
+            ui.wait_and_clear_console(seconds=1)
 
 
 def setup_user_defaults(fm: FileManager):
     """Sets up UserDefaults by importing a file from a specified directory."""
-    print("Create UserDefaults functionality is not implemented yet.")
     dir_a = input("Please enter file path for UserDefaults file: ")
     dir_b = fm.directory + "/user_defaults"
     fm.import_file_from_directory(dir_a, dir_b)
