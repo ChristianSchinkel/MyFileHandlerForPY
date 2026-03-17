@@ -3,12 +3,12 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "file_manager_py_package"
-version = "0.1.0"
+name = "myfilehandlerforpy"
+version = "1.0.0"
 authors = [
     {name = "Christian Schinkel", email = "christian.schinkel@me.com"}
 ]
-description = "A Python package for handling files and CSV operations"
+description = "A Python application for file and database management"
 readme = "README.md"
 license = {file = "LICENSE"}
 requires-python = ">=3.7"
@@ -35,4 +35,4 @@ keywords = ["file", "handler", "csv", "file-operations"]
 "Source Code" = "https://github.com/ChristianSchinkel/MyFileHandlerForPY"
 
 [tool.setuptools]
-packages = ["file_manager_py_package"]
+packages = ["src", "src.data_manager", "src.utils"]

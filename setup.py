@@ -1,5 +1,5 @@
 """
-Setup script for file_handler_py_package.
+Setup script for MyFileHandlerForPY.
 
 This file provides backward compatibility for older pip versions.
 For modern installations, pyproject.toml is preferred.
@@ -13,15 +13,15 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 
 setuptools.setup(
-    name="file_manager_py_package",
-    version="0.1.0",
+    name="myfilehandlerforpy",
+    version="1.0.0",
     author="Christian Schinkel",
     author_email="christian.schinkel@me.com",
-    description="A Python package for handling files and CSV operations",
+    description="A Python application for file and database management",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ChristianSchinkel/MyFileHandlerForPY",
-    packages=setuptools.find_packages(),
+    packages=["src", "src.data_manager", "src.utils"],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",

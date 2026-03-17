@@ -52,6 +52,7 @@ def display_database_handler_menu(ui: UserInterface,
                                   dbms: DatabaseManagementSystem):
     """Displays the database handler menu and handles user input."""
     is_running = True
+    ui.wait_and_clear_console(seconds=1)
     while is_running:
         print("""Database Handler Menu:\n
 1. Create Record\n
@@ -99,6 +100,7 @@ def display_database_handler_menu(ui: UserInterface,
 def display_settings_menu(ui: UserInterface, fm: FileManager):
     """Displays the settings menu and handles user input."""
     is_running = True
+    ui.wait_and_clear_console(seconds=1)
     while is_running:
         print("""Settings Menu:\n
 1. Create UserDefaults\n

@@ -1,100 +1,99 @@
-# file_manager_py_package
+# MyFileHandlerForPY
 
-A Python package for handling file operations and CSV processing.
+A Python CLI application for file and SQLite database management.
 
 ## Description
 
-This package provides convenient classes for reading, writing, and manipulating files, with specialized support for CSV operations. It includes `FileManager` for general file operations and `CSVManager` for CSV-specific functionality.
+This project provides a menu-driven console app to manage files, basic
+database table creation, and app-related data under `app_data/`.
+
+Core modules:
+
+- `FileManager` in `src/data_manager/file_manager.py`
+- `DatabaseManagementSystem` in `src/data_manager/database_management_system.py`
+- `UserInterface` in `src/utils/user_interface.py`
 
 ## Installation
 
-You can install this package using pip:
+Install from the project root:
 
 ```bash
-# Install from local directory
 pip install .
+```
 
-# Install in development/editable mode
+For editable development:
+
+```bash
 pip install -e .
 ```
 
-## Usage
+## Run The Application
 
-After installation, you can import and use the package:
+Start the CLI app:
 
-```python
-from file_manager_py_package import FileManager, CSVManager
-
-# Use FileManager for general file operations
-fm = FileManager('myfile.txt')
-content = fm.read()
-fm.write('New content')
-fm.append('Additional content')
-
-# Use CSVManager for CSV operations
-csv_manager = CSVManager('data.csv')
-data = csv_manager.read_csv('data.csv')
-csv_manager.write_csv(data)
+```bash
+python __main__.py
 ```
 
-## Package Structure
+## Usage (Imports)
+
+Example imports based on the current source tree:
+
+```python
+from src.data_manager.file_manager import FileManager
+from src.data_manager.database_management_system import DatabaseManagementSystem
+from src.utils.user_interface import UserInterface
+```
+
+## Project Structure
 
 ```text
-file_manager_py_package/
-├── file_manager_py_package/   # Package directory
-│   ├── __init__.py            # Package initialization
-│   ├── file_manager.py        # FileManager class for general file operations
-│   ├── csv_manager.py         # CSVManager class for CSV operations
-│   ├── directory_manager.py   # DirectoryManager class for directory operations
-│   └── memory_manager.py      # MemoryManager class for storage management
-├── utils/                     # Utility modules
-│   └── start_end.py           # Application startup and cleanup functions
-├── pyproject.toml             # Modern Python project metadata (PEP 621)
-├── setup.py                   # Setup script for backward compatibility
-├── MANIFEST.in                # Specifies additional files to include
-├── README.md                  # This file
-├── LICENSE                    # License information
-└── __main__.py                # Application entry point
+MyFileHandlerForPY/
+├── __main__.py
+├── app_data/
+│   ├── persistence/
+│   ├── resources/
+│   └── user_defaults/
+├── src/
+│   ├── __init__.py
+│   ├── data_manager/
+│   │   ├── __init__.py
+│   │   ├── database_management_system.py
+│   │   ├── file_manager.py
+│   │   └── sub_menu.py
+│   └── utils/
+│       ├── __init__.py
+│       ├── os_check.py
+│       └── user_interface.py
+├── tests/
+├── pyproject.toml
+├── setup.py
+└── README.md
 ```
 
 ## Features
 
-This package provides:
-
-- **FileManager**: A class for general file operations with methods for:
-  - Reading files
-  - Writing files
-  - Appending to files
-  - Checking file existence
-  - Identifying file types by extension
-  - Deleting files
-
-- **CSVManager**: A specialized class extending FileManager with CSV-specific methods:
-  - Reading CSV files into lists of dictionaries
-  - Writing lists of dictionaries to CSV files
-  - Support for custom delimiters
-  - Configurable field names
-
-- **DirectoryManager**: A class for directory operations with methods for:
-  - Checking directory existence
-  - Getting directory contents
-  - Setting directory paths
-
-- **MemoryManager**: A class for application data storage with methods for:
-  - Reading and writing storage files
-  - Copying files from source directories
-  - Clearing application data
-
-- Modern `pyproject.toml` configuration (PEP 621)
-- Backward-compatible `setup.py`
-- Type hints for better IDE support
-- Proper package structure
-- Version information
+- File operations:
+  - Create file
+  - Read file
+  - Update file
+  - Delete file
+  - Import one or many files from another directory
+- Database operations:
+  - SQLite connection and table creation via schema input
+  - Data insertion helpers
+- Settings operations:
+  - Import user defaults file
+  - Remove user defaults, resource files, and persistence files
+- Console helpers:
+  - Welcome banner and app metadata display
+  - Wait/clear console utilities
 
 ## Requirements
 
 - Python >= 3.7
+- `InputController>=0.2`
 
 ## License
 
-See LICENSE file for details.
+MIT License. See `LICENSE` for details.
