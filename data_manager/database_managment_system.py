@@ -1,9 +1,9 @@
 """Database Management System for handling database operations."""
 import sqlite3
-import file_manager
+from data_manager.file_manager import FileManager
 # import InputController
 
-fm = file_manager.FileManager()
+fm = FileManager()
 count = fm.count_files_with_name_and_extension('.', 'Database', '.db')
 DEFAULT_PATH = f"./app_data/persistance/Database{count}.db"
 
