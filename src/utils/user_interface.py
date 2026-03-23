@@ -19,6 +19,25 @@ class UserInterface:
         return input(prompt)
 
     @staticmethod
+    def display_menu(options: list[str],
+                     title: str = "Menu",
+                     prompt: str = "Please select an option: "
+                     ) -> tuple[int, str]:
+        """Display a menu of options and get the user's selection."""
+        print(f"\n{title}\n" + "-" * len(title))
+        for i, option in enumerate(options, start=1):
+            print(f"{i}. {option}")
+        while True:
+            try:
+                choice = int(input(prompt))
+                if 1 <= choice <= len(options):
+                    return choice, options[choice - 1]
+
+                print("Invalid choice. Please try again.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+
+    @staticmethod
     def show_app_info(version: str, author: str, lic: str = "") -> None:
         """Displays information about the application."""
         print(f"""
